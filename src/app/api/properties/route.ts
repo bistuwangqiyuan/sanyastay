@@ -10,11 +10,20 @@ export async function GET(request: NextRequest) {
   const query = searchParams.get('query') || '';
   const district = searchParams.get('district') || '';
   const propertyType = searchParams.get('property_type') || '';
-  const durationType = searchParams.get('duration_type') || '';
   const priceMin = searchParams.get('price_min');
   const priceMax = searchParams.get('price_max');
   const sortBy = searchParams.get('sort_by') || 'popular';
   const elderFriendly = searchParams.get('is_elder_friendly');
+
+  if (!supabase) {
+    return NextResponse.json({
+      properties: [],
+      total: 0,
+      page,
+      per_page: perPage,
+      total_pages: 0,
+    });
+  }
 
   let dbQuery = supabase
     .from('properties')

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:smoke": "node tests/smoke-deploy.mjs",
+    "test:ci": "npm run lint && npm run build && npm run test:smoke"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.69",

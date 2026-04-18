@@ -7,6 +7,9 @@ export async function GET(
 ) {
   const { id } = await params;
   const supabase = await createClient();
+  if (!supabase) {
+    return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
+  }
 
   const { data, error } = await supabase
     .from('properties')

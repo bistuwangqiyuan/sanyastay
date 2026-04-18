@@ -8,6 +8,10 @@ export async function GET(request: NextRequest) {
   const page = parseInt(searchParams.get('page') || '1');
   const perPage = parseInt(searchParams.get('per_page') || '20');
 
+  if (!supabase) {
+    return NextResponse.json({ posts: [], total: 0, page, per_page: perPage });
+  }
+
   let query = supabase
     .from('community_posts')
     .select('*, author:profiles!community_posts_author_id_fkey(*)', { count: 'exact' })
@@ -27,6 +31,9 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: Request) {
   const supabase = await createClient();
+  if (!supabase) {
+    return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
+  }
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 

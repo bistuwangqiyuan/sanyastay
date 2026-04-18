@@ -146,7 +146,9 @@ export default function CommunityPage() {
                       <span className="text-xs font-mono text-muted-foreground w-5">{i + 1}</span>
                       <span className="text-sm text-primary hover:underline cursor-pointer">{tag}</span>
                     </div>
-                    <span className="text-xs text-muted-foreground">{Math.floor(100 + Math.random() * 500)}讨论</span>
+                    <span className="text-xs text-muted-foreground">
+                      {100 + ((i * 97 + tag.length * 13) % 401)}讨论
+                    </span>
                   </div>
                 ))}
               </div>
