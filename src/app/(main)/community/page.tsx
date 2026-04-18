@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { SectionHeading } from '@/components/shared/section-heading';
 import { COMMUNITY_CATEGORIES } from '@/lib/constants';
 import Link from 'next/link';
 
