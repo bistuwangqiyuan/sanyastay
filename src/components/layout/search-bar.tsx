@@ -10,6 +10,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils';
 import { DISTRICTS, DURATION_TYPES } from '@/lib/constants';
 import { useAppStore } from '@/store/app-store';
+import type { DurationType } from '@/types/database';
 
 interface SearchBarProps {
   variant?: 'hero' | 'compact';
@@ -64,7 +65,7 @@ export function SearchBar({ variant = 'hero', className }: SearchBarProps) {
             <label className="text-xs text-muted-foreground font-medium">{isZh ? '目的地' : 'Location'}</label>
             <Select
               value={searchFilters.district || ''}
-              onValueChange={(v) => setSearchFilters({ district: v })}
+              onValueChange={(v) => setSearchFilters({ district: v ?? undefined })}
             >
               <SelectTrigger className="border-0 p-0 h-7 text-sm font-medium shadow-none focus:ring-0">
                 <SelectValue placeholder={isZh ? '选择区域' : 'Select area'} />
@@ -87,7 +88,9 @@ export function SearchBar({ variant = 'hero', className }: SearchBarProps) {
             <label className="text-xs text-muted-foreground font-medium">{isZh ? '租期类型' : 'Duration'}</label>
             <Select
               value={searchFilters.duration_type || ''}
-              onValueChange={(v) => setSearchFilters({ duration_type: v as 'daily' | 'monthly' | 'seasonal' })}
+              onValueChange={(v) =>
+                setSearchFilters({ duration_type: v == null ? undefined : (v as DurationType) })
+              }
             >
               <SelectTrigger className="border-0 p-0 h-7 text-sm font-medium shadow-none focus:ring-0">
                 <SelectValue placeholder={isZh ? '选择租期' : 'Select type'} />

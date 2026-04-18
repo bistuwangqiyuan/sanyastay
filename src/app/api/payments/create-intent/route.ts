@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { stripe } from '@/lib/stripe/server';
+import { getStripe } from '@/lib/stripe/server';
 import { createClient } from '@/lib/supabase/server';
 
 export async function POST(request: Request) {
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
   if (!booking) return NextResponse.json({ error: 'Booking not found' }, { status: 404 });
 
-  const paymentIntent = await stripe.paymentIntents.create({
+  const paymentIntent = await getStripe().paymentIntents.create({
     amount: Math.round(booking.total_price * 100),
     currency,
     metadata: {

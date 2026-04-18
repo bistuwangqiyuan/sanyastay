@@ -1,11 +1,21 @@
-import { streamText } from 'ai';
-import { openai } from '@ai-sdk/openai';
+import { streamText } from "ai";
+import { openai } from "@ai-sdk/openai";
 
 export async function POST(request: Request) {
+  if (!process.env.OPENAI_API_KEY) {
+    return Response.json(
+      {
+        error:
+          "OPENAI_API_KEY is not configured. Set it in Netlify environment variables to enable the concierge bot.",
+      },
+      { status: 503 }
+    );
+  }
+
   const { messages } = await request.json();
 
   const result = streamText({
-    model: openai('gpt-4o-mini'),
+    model: openai("gpt-4o-mini"),
     system: `你是三亚旅居通(SanyaStay)的智能助手。你帮助用户了解三亚旅居相关信息，包括：
     - 三亚各区域的特点和优势
     - 旅居房源推荐建议
@@ -17,5 +27,5 @@ export async function POST(request: Request) {
     messages,
   });
 
-  return result.toDataStreamResponse();
+  return result.toTextStreamResponse();
 }

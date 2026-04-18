@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Shield, Clock, Wallet, Users, Star, ChevronRight, Waves, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -103,6 +104,9 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+          <p className="text-center text-xs text-muted-foreground mt-4 max-w-2xl mx-auto">
+            上表为种子期至 Y1 阶段目标量级示意（对齐商业计划书融资与 MVP 里程碑），非实时运营数据；正式披露以审计与监管报送为准。
+          </p>
         </div>
       </section>
 
@@ -135,9 +139,16 @@ export default function HomePage() {
               <Link key={area.name} href={`/properties?district=${area.name}`}>
                 <Card className="overflow-hidden group cursor-pointer border-0 shadow-sm hover:shadow-lg transition-all">
                   <div className="relative h-48 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-sand/20" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Waves className="h-16 w-16 text-white/20" />
+                    <Image
+                      src={area.image}
+                      alt={area.name}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/35 to-sand/25 mix-blend-multiply" />
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <Waves className="h-16 w-16 text-white/25" />
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
                       <h3 className="text-white font-bold text-xl">{area.name}</h3>

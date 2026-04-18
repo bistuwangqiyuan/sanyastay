@@ -14,8 +14,43 @@ function DropdownMenuPortal({ ...props }: MenuPrimitive.Portal.Props) {
   return <MenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />
 }
 
-function DropdownMenuTrigger({ ...props }: MenuPrimitive.Trigger.Props) {
-  return <MenuPrimitive.Trigger data-slot="dropdown-menu-trigger" {...props} />
+function DropdownMenuTrigger({
+  asChild,
+  className,
+  children,
+  ...props
+}: MenuPrimitive.Trigger.Props & { asChild?: boolean }) {
+  if (asChild && React.isValidElement(children)) {
+    const child = children as React.ReactElement<Record<string, unknown>>;
+    return (
+      <MenuPrimitive.Trigger
+        data-slot="dropdown-menu-trigger"
+        className={className}
+        nativeButton={false}
+        {...props}
+        render={(triggerProps, state) =>
+          React.cloneElement(child, {
+            ...(triggerProps as Record<string, unknown>),
+            "data-state": state.open ? "open" : "closed",
+            className: cn(
+              (triggerProps as { className?: string }).className,
+              child.props.className as string | undefined,
+              className
+            ),
+          } as never)
+        }
+      />
+    );
+  }
+  return (
+    <MenuPrimitive.Trigger
+      data-slot="dropdown-menu-trigger"
+      className={className}
+      {...props}
+    >
+      {children}
+    </MenuPrimitive.Trigger>
+  );
 }
 
 function DropdownMenuContent({
@@ -74,26 +109,58 @@ function DropdownMenuLabel({
 }
 
 function DropdownMenuItem({
+  asChild,
   className,
   inset,
   variant = "default",
+  children,
   ...props
 }: MenuPrimitive.Item.Props & {
   inset?: boolean
   variant?: "default" | "destructive"
+  asChild?: boolean
 }) {
+  const itemClassName = cn(
+    "group/dropdown-menu-item relative flex cursor-default items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-inset:pl-7 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-[variant=destructive]:*:[svg]:text-destructive",
+    className
+  );
+
+  if (asChild && React.isValidElement(children)) {
+    const child = children as React.ReactElement<Record<string, unknown>>;
+    return (
+      <MenuPrimitive.Item
+        data-slot="dropdown-menu-item"
+        data-inset={inset}
+        data-variant={variant}
+        className={itemClassName}
+        nativeButton={false}
+        {...props}
+        render={(itemProps, state) =>
+          React.cloneElement(child, {
+            ...(itemProps as Record<string, unknown>),
+            "data-highlighted": state.highlighted ? "" : undefined,
+            className: cn(
+              (itemProps as { className?: string }).className,
+              child.props.className as string | undefined,
+              itemClassName
+            ),
+          } as never)
+        }
+      />
+    );
+  }
+
   return (
     <MenuPrimitive.Item
       data-slot="dropdown-menu-item"
       data-inset={inset}
       data-variant={variant}
-      className={cn(
-        "group/dropdown-menu-item relative flex cursor-default items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-inset:pl-7 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-[variant=destructive]:*:[svg]:text-destructive",
-        className
-      )}
+      className={itemClassName}
       {...props}
-    />
-  )
+    >
+      {children}
+    </MenuPrimitive.Item>
+  );
 }
 
 function DropdownMenuSub({ ...props }: MenuPrimitive.SubmenuRoot.Props) {

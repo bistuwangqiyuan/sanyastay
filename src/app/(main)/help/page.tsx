@@ -52,7 +52,7 @@ export default function HelpPage() {
       {/* FAQ */}
       <div className="max-w-3xl mx-auto">
         <SectionHeading title="常见问题" />
-        <Accordion type="single" collapsible className="space-y-2">
+        <Accordion multiple={false} className="space-y-2">
           {faqs.map((faq, i) => (
             <AccordionItem key={i} value={`faq-${i}`} className="border rounded-lg px-4">
               <AccordionTrigger className="text-left font-medium text-sm hover:no-underline">

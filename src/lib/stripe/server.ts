@@ -1,5 +1,15 @@
-import Stripe from 'stripe';
+import Stripe from "stripe";
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  typescript: true,
-});
+let stripeSingleton: Stripe | null = null;
+
+/** Lazy Stripe client so `next build` does not require keys unless payment routes run. */
+export function getStripe(): Stripe {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error("STRIPE_SECRET_KEY is not set");
+  }
+  if (!stripeSingleton) {
+    stripeSingleton = new Stripe(key, { typescript: true });
+  }
+  return stripeSingleton;
+}

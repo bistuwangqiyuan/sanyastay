@@ -70,6 +70,10 @@ function PropertiesContent() {
   const [filterOpen, setFilterOpen] = useState(false);
   const [properties] = useState<Property[]>(MOCK_PROPERTIES);
   const [priceRange, setPriceRange] = useState([0, 20000]);
+  const setPriceRangeFromSlider = (value: number | readonly number[]) => {
+    if (typeof value === 'number') setPriceRange([value, value]);
+    else setPriceRange([Number(value[0]), Number(value[1])]);
+  };
 
   const query = searchParams.get('q') || '';
 
@@ -130,7 +134,7 @@ function PropertiesContent() {
                 <Separator />
                 <div>
                   <h4 className="font-medium mb-3">{isZh ? '价格范围 (月)' : 'Price Range (/mo)'}</h4>
-                  <Slider value={priceRange} onValueChange={setPriceRange} min={0} max={50000} step={500} className="mt-6" />
+                  <Slider value={priceRange} onValueChange={setPriceRangeFromSlider} min={0} max={50000} step={500} className="mt-6" />
                   <div className="flex justify-between text-sm text-muted-foreground mt-2">
                     <span>¥{priceRange[0]}</span>
                     <span>¥{priceRange[1]}</span>
@@ -196,7 +200,7 @@ function PropertiesContent() {
           <Separator />
           <div>
             <h4 className="font-medium mb-3">{isZh ? '价格范围 (月)' : 'Price (/mo)'}</h4>
-            <Slider value={priceRange} onValueChange={setPriceRange} min={0} max={50000} step={500} className="mt-6" />
+            <Slider value={priceRange} onValueChange={setPriceRangeFromSlider} min={0} max={50000} step={500} className="mt-6" />
             <div className="flex justify-between text-sm text-muted-foreground mt-2">
               <span>¥{priceRange[0]}</span>
               <span>¥{priceRange[1]}</span>

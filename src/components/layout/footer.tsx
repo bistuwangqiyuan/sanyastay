@@ -73,6 +73,12 @@ export function Footer() {
           </div>
         </div>
 
+        <p className="mt-10 text-xs text-muted-foreground leading-relaxed max-w-4xl">
+          <span className="font-medium text-foreground">公开数据口径说明：</span>
+          平台对外展示的宏观经济与旅游统计，以《三亚旅居民宿平台商业计划书》所载为准，包括但不限于：海南自贸港封关与免签表述（新华社，2025-12-18）、三亚市 GDP
+          与过夜游客花费（三亚市统计局公开数据）、企业所得税鼓励类 15% 税率（国家税务总局海南省税务局政策摘要）。具体数值随政府发布更新，请以主管部门最新公报为准。
+        </p>
+
         <Separator className="my-8" />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
