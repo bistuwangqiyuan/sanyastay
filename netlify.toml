@@ -1,5 +1,11 @@
 # SanyaStay — Netlify + Next.js (Essential Next.js plugin handles output)
 # Docs: https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/
+#
+# Dashboard: Site configuration → Build & deploy → set Base directory empty
+# (repo root). If "Publish directory" shows `.next`, the Next.js plugin still
+# builds correctly; for new sites prefer leaving publish directory blank.
+# Env: copy values from `.env.example` into Site settings → Environment variables
+# (at minimum `NEXT_PUBLIC_APP_URL` = your https://…netlify.app URL).
 
 [build]
   command = "npm run build"
