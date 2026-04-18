@@ -10,6 +10,14 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
+  --color-ocean: var(--ocean);
+  --color-ocean-light: var(--ocean-light);
+  --color-ocean-dark: var(--ocean-dark);
+  --color-sand: var(--sand);
+  --color-sand-light: var(--sand-light);
+  --color-sand-dark: var(--sand-dark);
+  --color-coral: var(--coral);
+  --color-palm: var(--palm);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,72 +57,95 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: oklch(0.99 0.002 240);
+  --foreground: oklch(0.18 0.02 240);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.18 0.02 240);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.18 0.02 240);
+  --primary: oklch(0.52 0.14 240);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.76 0.12 65);
+  --secondary-foreground: oklch(0.2 0.04 65);
+  --muted: oklch(0.96 0.005 240);
+  --muted-foreground: oklch(0.5 0.02 240);
+  --accent: oklch(0.96 0.01 240);
+  --accent-foreground: oklch(0.18 0.02 240);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --border: oklch(0.91 0.01 240);
+  --input: oklch(0.91 0.01 240);
+  --ring: oklch(0.52 0.14 240);
+  --radius: 0.75rem;
+
+  /* SanyaStay Brand Colors */
+  --ocean: oklch(0.52 0.14 240);
+  --ocean-light: oklch(0.62 0.12 240);
+  --ocean-dark: oklch(0.42 0.16 240);
+  --sand: oklch(0.76 0.12 65);
+  --sand-light: oklch(0.86 0.08 65);
+  --sand-dark: oklch(0.66 0.14 65);
+  --coral: oklch(0.65 0.18 25);
+  --palm: oklch(0.55 0.15 155);
+
+  --chart-1: oklch(0.52 0.14 240);
+  --chart-2: oklch(0.76 0.12 65);
+  --chart-3: oklch(0.65 0.18 25);
+  --chart-4: oklch(0.55 0.15 155);
+  --chart-5: oklch(0.6 0.1 300);
+
+  --sidebar: oklch(0.99 0.002 240);
+  --sidebar-foreground: oklch(0.18 0.02 240);
+  --sidebar-primary: oklch(0.52 0.14 240);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.96 0.01 240);
+  --sidebar-accent-foreground: oklch(0.18 0.02 240);
+  --sidebar-border: oklch(0.91 0.01 240);
+  --sidebar-ring: oklch(0.52 0.14 240);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: oklch(0.14 0.02 240);
+  --foreground: oklch(0.96 0.005 240);
+  --card: oklch(0.18 0.02 240);
+  --card-foreground: oklch(0.96 0.005 240);
+  --popover: oklch(0.18 0.02 240);
+  --popover-foreground: oklch(0.96 0.005 240);
+  --primary: oklch(0.62 0.12 240);
+  --primary-foreground: oklch(0.14 0.02 240);
+  --secondary: oklch(0.76 0.12 65);
+  --secondary-foreground: oklch(0.14 0 0);
+  --muted: oklch(0.22 0.02 240);
+  --muted-foreground: oklch(0.7 0.02 240);
+  --accent: oklch(0.22 0.02 240);
+  --accent-foreground: oklch(0.96 0.005 240);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --border: oklch(0.28 0.02 240);
+  --input: oklch(0.28 0.02 240);
+  --ring: oklch(0.62 0.12 240);
+
+  --ocean: oklch(0.62 0.12 240);
+  --ocean-light: oklch(0.72 0.1 240);
+  --ocean-dark: oklch(0.52 0.14 240);
+  --sand: oklch(0.76 0.12 65);
+  --sand-light: oklch(0.86 0.08 65);
+  --sand-dark: oklch(0.66 0.14 65);
+  --coral: oklch(0.7 0.16 25);
+  --palm: oklch(0.6 0.13 155);
+
+  --chart-1: oklch(0.62 0.12 240);
+  --chart-2: oklch(0.76 0.12 65);
+  --chart-3: oklch(0.7 0.16 25);
+  --chart-4: oklch(0.6 0.13 155);
+  --chart-5: oklch(0.65 0.08 300);
+
+  --sidebar: oklch(0.18 0.02 240);
+  --sidebar-foreground: oklch(0.96 0.005 240);
+  --sidebar-primary: oklch(0.62 0.12 240);
+  --sidebar-primary-foreground: oklch(0.96 0.005 240);
+  --sidebar-accent: oklch(0.22 0.02 240);
+  --sidebar-accent-foreground: oklch(0.96 0.005 240);
+  --sidebar-border: oklch(0.28 0.02 240);
+  --sidebar-ring: oklch(0.62 0.12 240);
 }
 
 @layer base {
@@ -125,6 +156,22 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth;
   }
+}
+
+/* Elder Mode - larger fonts and simplified UI */
+.elder-mode {
+  font-size: 1.25rem;
+}
+.elder-mode .text-sm {
+  font-size: 1rem;
+}
+.elder-mode .text-xs {
+  font-size: 0.9rem;
+}
+.elder-mode button,
+.elder-mode a {
+  min-height: 48px;
+  min-width: 48px;
 }
