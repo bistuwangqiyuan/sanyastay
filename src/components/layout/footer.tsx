@@ -28,11 +28,15 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 shrink-0" />
-                <span>400-888-STAY</span>
+                <span>13426086861</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0" />
-                <span>hello@sanyastay.com</span>
+                <a href="mailto:mingxinai@agentmail.to" className="hover:text-foreground transition-colors">mingxinai@agentmail.to</a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="h-4 w-4 shrink-0" />
+                <a href="mailto:13426086861@139.com" className="hover:text-foreground transition-colors">13426086861@139.com</a>
               </div>
             </div>
           </div>
@@ -83,9 +87,6 @@ export function Footer() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p>&copy; 2026 三亚旅居通 SanyaStay. 保留所有权利。</p>
-          <div className="flex items-center gap-4">
-            <span>琼ICP备XXXXXXXX号</span>
-          </div>
         </div>
       </div>
     </footer>

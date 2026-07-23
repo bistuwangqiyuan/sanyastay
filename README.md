@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 三亚旅居通 SanyaStay
 
-## Getting Started
+三亚旅居民宿平台:提供短租、月租、季租一站式服务,含房源搜索、预订支付、房东后台、旅居社区等模块。
 
-First, run the development server:
+技术栈:Next.js (App Router) + TypeScript + Tailwind CSS + Supabase + Stripe,部署于 Netlify。
+
+## 本地开发
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+打开 [http://localhost:3000](http://localhost:3000) 查看效果。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+环境变量参考 `.env.example`(Supabase / Stripe / OpenAI 等,均为可选,缺失时 API 会优雅降级)。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 构建与测试
 
-## Learn More
+```bash
+npm run build   # 生产构建
+npm run lint    # ESLint
+npm test        # 冒烟测试
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 部署
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+站点通过 Netlify 自动部署:推送到 GitHub `master` 分支后自动构建上线。构建配置见 `netlify.toml`,环境变量在 Netlify 控制台 Site settings → Environment variables 中配置。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 联系方式
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 邮箱:mingxinai@agentmail.to / 13426086861@139.com
+- 电话:13426086861
